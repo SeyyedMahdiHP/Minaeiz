@@ -16,25 +16,28 @@ def parentheses_balance_checker(userinput):
     open_exp = "[{("
     close_exp = "]})"
     stack_list = list()
-    index =0
-    for  item in  userinput:
-        if item in open_exp:
-            stack_list.append(item)
-            index += 1
-        elif item in close_exp:
-            if item == "}" and stack_list[index-1] == "{":
-                stack_list.pop()
-                index -=1
-            elif item == ")" and stack_list[index-1] == "(":
-                stack_list.pop()
-                index -= 1
-            elif item == "]" and stack_list[index-1] == "[":
-                stack_list.pop()
-                index -= 1
+    index = 0
+    try:
+
+        for item in userinput:
+            if item in open_exp:
+                stack_list.append(item)
+                index += 1
+            elif item in close_exp:
+                if item == "}" and stack_list.pop() == "{":
+                    index -= 1
+                elif item == ")" and stack_list.pop() == "(":
+                    index -= 1
+                elif item == "]" and stack_list.pop() == "[":
+                    index -= 1
+                else:
+                    return False
             else:
                 return False
-        else:
-            return False
+    except Exception:
+        return False
+    if index != 0:
+        return False
     return True
 
 
