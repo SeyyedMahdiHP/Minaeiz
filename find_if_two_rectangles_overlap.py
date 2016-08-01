@@ -12,8 +12,17 @@ r2: Bottom Right coordinate of second rectangle.
 http://www.geeksforgeeks.org/find-two-rectangles-overlap/
 """
 
+from matplotlib import pyplot as plt
 
-def check_overlap(l1, l2, r1, r2):
+def draw_rects(cords):
+    X = range(100)
+    Y = [2**n for n in X]
+    plt.plot([0,10],[10,10])
+    plt.show()
+
+
+draw_rects(1)
+def check_overlap1(l1, l2, r1, r2):
     if l1[0] > r2[0] or l2[0] > r1[0]:
         return False
 
@@ -27,8 +36,26 @@ l1 = [0, 10]
 r1 = [10, 0]
 l2 = [5, 5]
 r2 = [15, 0]
-if check_overlap(l1, l2, r1, r2):
+if check_overlap1(l1, l2, r1, r2):
     print("Rectangles Overlap")
 else:
     print("Rectangles Don't Overlap")
 
+    #######################checkoverlap2##############################
+
+
+def calculate_cord(rect):
+    x = (rect["x"], rect["y"]+rect["h"])
+    y = (rect["x"] + rect["w"], rect["y"])
+    return list(x), list(y)
+
+
+rect1 = {"x": 2, "y": 3, "h": 2, "w": 5}
+rect2 = {"x": 3, "y": 6, "h": 5, "w": 2}
+
+l1, r1 = calculate_cord(rect1)
+l2, r2 = calculate_cord(rect2)
+if check_overlap1(l1, l2, r1, r2):
+    print("Rectangles Overlap")
+else:
+    print("Rectangles Don't Overlap")
