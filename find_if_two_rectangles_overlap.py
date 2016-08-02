@@ -15,11 +15,12 @@ http://www.geeksforgeeks.org/find-two-rectangles-overlap/
 
 def draw_rects(topleft_point, bottomright_point):
     from matplotlib import pyplot as plt
-    # plt.plot(topleft_point, [bottomright_point[0], topleft_point[1]])
-    # plt.plot([topleft_point[0], bottomright_point[1]], [topleft_point[0], topleft_point[1]])
-    # plt.plot([topleft_point[0], bottomright_point[1]], [bottomright_point[0], bottomright_point[1]])
-    # plt.plot(bottomright_point, [bottomright_point[0], topleft_point[1]])
-    # plt.plot([0,0],[0,10])
+    print(topleft_point, bottomright_point)
+    plt.plot(topleft_point, [bottomright_point[0], topleft_point[1]])
+    plt.plot(topleft_point, [topleft_point[0], bottomright_point[1]])
+    plt.plot([bottomright_point[0], topleft_point[1]], bottomright_point)
+    plt.plot([topleft_point[0], bottomright_point[1]], bottomright_point)
+    plt.axis([0, 30, 0, 30])
     plt.show()
 
 
@@ -33,11 +34,12 @@ def check_overlap1(l1, l2, r1, r2):
     return True
 
 
-l1 = [0, 10]
-r1 = [10, 0]
+l1 = [1, 10]
+r1 = [10, 1]
 l2 = [5, 5]
 r2 = [15, 0]
 draw_rects(l1, r1)
+draw_rects(l2, r2)
 if check_overlap1(l1, l2, r1, r2):
     print("Rectangles Overlap")
 else:
@@ -48,15 +50,17 @@ else:
 
 
 def calculate_cord(rect):
-    x = (rect["x"], rect["y"] + rect["h"])
-    y = (rect["x"] + rect["w"], rect["y"])
-    return list(x), list(y)
+    l = (rect["x"], rect["y"] + rect["h"])
+    r = (rect["x"] + rect["w"], rect["y"])
+    return list(l), list(r)
 
 
 rect1 = {"x": 2, "y": 3, "h": 2, "w": 5}
 rect2 = {"x": 3, "y": 6, "h": 5, "w": 2}
 l1, r1 = calculate_cord(rect1)
 l2, r2 = calculate_cord(rect2)
+draw_rects(l1, r1)
+draw_rects(l2, r2)
 if check_overlap1(l1, l2, r1, r2):
     print("Rectangles Overlap")
 else:
