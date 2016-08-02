@@ -16,40 +16,35 @@ http://www.geeksforgeeks.org/find-two-rectangles-overlap/
 def draw_rects(topleft_point, bottomright_point):
     from matplotlib import pyplot as plt
     print(topleft_point, bottomright_point)
-    plt.plot(topleft_point, [bottomright_point[0], topleft_point[1]])
-    plt.plot(topleft_point, [topleft_point[0], bottomright_point[1]])
-    plt.plot([bottomright_point[0], topleft_point[1]], bottomright_point)
-    plt.plot([topleft_point[0], bottomright_point[1]], bottomright_point)
-    plt.axis([0, 30, 0, 30])
+    x1, y1 = topleft_point
+    x2, y2 = bottomright_point
+    plt.plot([x1, x2], [y1, y1])
+    plt.plot([x1, x1], [y1, y2])
+    plt.plot([x1, x2], [y2, y2])
+    plt.plot([x2, x2], [y1, y2])
+    plt.axis([0, 15, 0, 15])
     plt.show()
 
 
 def check_overlap1(l1, l2, r1, r2):
-    if l1[0] > r2[0] or l2[0] > r1[0]:
+    draw_rects(l1, r1)
+    draw_rects(l2, r2)
+    if l1[0] > r2[0] or l2[0] > r1[0] or l1[1] < r2[1] or l2[1] < r1[1]:
+        print("Rectangles Don't Overlap")
         return False
-
-    if l1[1] < r2[1] or l2[1] < r1[1]:
-        return False
-
+    print("Rectangles Overlap")
     return True
 
 
-l1 = [1, 10]
-r1 = [10, 1]
-l2 = [5, 5]
-r2 = [15, 0]
-draw_rects(l1, r1)
-draw_rects(l2, r2)
-if check_overlap1(l1, l2, r1, r2):
-    print("Rectangles Overlap")
-else:
-    print("Rectangles Don't Overlap")
-
-
+l1 = [0, 10]  # top left point of rect1
+r1 = [10, 0]  # bottom right point of rect1
+l2 = [5, 5]  # top left point of rect2
+r2 = [15, 0]  # bottom right point of rect2
+check_overlap1(l1, l2, r1, r2)
     #######################checkoverlap2##############################
 
 
-def calculate_cord(rect):
+def calculate_cord_dictionary_to_list(rect):
     l = (rect["x"], rect["y"] + rect["h"])
     r = (rect["x"] + rect["w"], rect["y"])
     return list(l), list(r)
@@ -57,11 +52,6 @@ def calculate_cord(rect):
 
 rect1 = {"x": 2, "y": 3, "h": 2, "w": 5}
 rect2 = {"x": 3, "y": 6, "h": 5, "w": 2}
-l1, r1 = calculate_cord(rect1)
-l2, r2 = calculate_cord(rect2)
-draw_rects(l1, r1)
-draw_rects(l2, r2)
-if check_overlap1(l1, l2, r1, r2):
-    print("Rectangles Overlap")
-else:
-    print("Rectangles Don't Overlap")
+l1, r1 = calculate_cord_dictionary_to_list(rect1)
+l2, r2 = calculate_cord_dictionary_to_list(rect2)
+check_overlap1(l1, l2, r1, r2)
