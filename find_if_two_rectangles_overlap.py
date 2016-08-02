@@ -26,7 +26,7 @@ def draw_rects(topleft_point, bottomright_point):
     plt.show()
 
 
-def check_overlap1(l1, l2, r1, r2):
+def check_overlap(l1, l2, r1, r2):
     draw_rects(l1, r1)
     draw_rects(l2, r2)
     if l1[0] > r2[0] or l2[0] > r1[0] or l1[1] < r2[1] or l2[1] < r1[1]:
@@ -40,7 +40,7 @@ l1 = [0, 10]  # top left point of rect1
 r1 = [10, 0]  # bottom right point of rect1
 l2 = [5, 5]  # top left point of rect2
 r2 = [15, 0]  # bottom right point of rect2
-check_overlap1(l1, l2, r1, r2)
+check_overlap(l1, l2, r1, r2)
     #######################checkoverlap2##############################
 
 
@@ -54,4 +54,4 @@ rect1 = {"x": 2, "y": 3, "h": 2, "w": 5}
 rect2 = {"x": 3, "y": 6, "h": 5, "w": 2}
 l1, r1 = calculate_cord_dictionary_to_list(rect1)
 l2, r2 = calculate_cord_dictionary_to_list(rect2)
-check_overlap1(l1, l2, r1, r2)
+check_overlap(l1, l2, r1, r2)
