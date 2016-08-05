@@ -9,7 +9,11 @@ http://stackoverflow.com/questions/1623375/writing-your-own-square-root-function
 
 
 def squareroot1(num):
-    for i in range(num):
+    if num > 7:
+        step = num // 2
+    else:
+        step = num
+    for i in range(step):
         square = i ** 2
         if square == num:
             return str("square root:%d" % square)
@@ -17,4 +21,4 @@ def squareroot1(num):
             return str("square root:%d" % (i - 1) ** 2)
 
 
-print(squareroot1(5))
+print(squareroot1(7))
