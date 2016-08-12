@@ -8,8 +8,9 @@ import re
 
 
 def check_national_code_pattern_with_regex(ncode):
-    match = re.match("[0-9]{3}\-[0-9]{6}\-[0-9]", ncode)
-    search = re.search("[0-9]{3}\-[0-9]{6}\-[0-9]", ncode)
+    match = re.match("[0-9]{3}\-[0-9]{6}\-[0-9]", ncode)  # match check pattern with only start of the string
+    search = re.search("[0-9]{3}\-[0-9]{6}\-[0-9]", ncode)  # search with \A is
+    # match function implementation: re.search("\Apattern")
     findall = re.findall("[0-9]{3}\-[0-9]{6}\-[0-9]", ncode)  # findall will find  all matched
     # and return them in a list
     information = [match, search, findall, ncode]
