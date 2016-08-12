@@ -21,4 +21,4 @@ def squareroot1(num):
             return str("square root:%d" % (i - 1) ** 2)
 
 
-print(squareroot1(7))
+print(squareroot1(12))
