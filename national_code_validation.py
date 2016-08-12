@@ -20,24 +20,21 @@ def check_national_code_pattern_with_regex(ncode):
 
 def check_validity(ncode):
     code = ncode[2]
-    if not code:
+    if not code:  # when the pattern didn't match , code is equal to None, it has to return valid_flag=False
         valid_flag = False
     else:
-        code = code[0].replace("-", "")
+        code = code[0].replace("-", "")  # remove - in the national code
         if code in [str(item) * 10 for item in range(0, 10)]:  # 0000000000 or 1111111111 , ..., 999999999
             valid_flag = False
         else:
             sum1 = 0
-            checksum = int(code[9])
+            checksum = int(code[9])  # the last national code digit is something like checksum
             for i in range(0, 9):
                 sum1 += int(code[i]) * (10 - i)
+
             redundant = sum1 % 11
-            if redundant < 2:
-                if redundant == checksum:
-                    valid_flag = True
-                else:
-                    valid_flag = False
-            elif checksum == (11 - redundant):
+            if (redundant < 2 and redundant == checksum) or \
+                    (redundant >= 2 and checksum == (11 - redundant)):
                 valid_flag = True
             else:
                 valid_flag = False
