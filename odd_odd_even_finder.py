@@ -31,9 +31,12 @@ def is_valid(formula):
     except ArithmeticError:
         return False
 
-    return
 
+def test_software():
+    assert solve("SEND + MORE == MONEY") == '9567 + 1085 == 10652'
+    assert solve("CRACK + HACK == ERROR") == '42641 + 9641 == 52282'
+    assert solve("ODD + ODD == EVEN") == '655 + 655 == 1310' or '855 + 855 == 1710'
+    assert solve("CRACK / HKD == ER") == '26524 / 349 == 76' or '19517 / 673 == 29'
 
-solve("ODD + ODD == EVEN")
-solve("CRACK + HACK == ERROR ")
-solve("CRACK / HKD == ER ")
+    return "test passes"
+print(test_software())
