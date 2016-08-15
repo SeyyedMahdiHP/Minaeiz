@@ -2,7 +2,7 @@
 # SeyyedMahdiHassanpour
 # smahdi1991@gmail.com
 """ do not mistake with language compiling
- ""Compile"" sth in an interpreter language:
+ ""Compile"":Python opcode cacher"" sth in an interpreter language:
   in regular solve, we put the numbers in a permutation in one big for in the input expression to make
   an number expression and then use eval function to evaluate each new expression, and because eval
    is an expensive or slow function our performance is really bad, when we have a 10 second
