@@ -10,6 +10,7 @@ def faster_solve(formula):
                 table = str.maketrans(letters, ''.join(map(str, digits)))
                 result = formula.translate(table)
                 if not re.search(r'\b0[0-9]', result):
+                    print(result)
                     return result
         except ArithmeticError:
             pass
@@ -23,7 +24,7 @@ def compile_word(word):
         return word
 
 
-def compile_formula(formula, verbos=False):
+def compile_formula(formula, verbos=True):
     letters = ''.join(set(re.findall('[A-Z]', formula)))
     parameters = ', '.join(letters)
     body = ''.join(map(compile_word, re.split('([A-Z]+)', formula)))
@@ -40,4 +41,4 @@ def test():
 
     return 'tests passes'
 
-test()
+print(test())
