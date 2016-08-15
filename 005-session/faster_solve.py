@@ -20,7 +20,7 @@ import itertools
 
 
 def faster_solve(formula):
-    letters, f = compile_formula(formula)
+    letters, f = compile_formula(formula, True)
     for digits in itertools.permutations((1, 2, 3, 4, 5, 6, 7, 8, 9, 0), len(letters)):
         try:
             if f(*digits):
@@ -41,7 +41,7 @@ def compile_word(word):
         return word
 
 
-def compile_formula(formula, verbos=True):
+def compile_formula(formula, verbos=False):
     letters = ''.join(set(re.findall('[A-Z]', formula)))
     parameters = ', '.join(letters)
     body = ''.join(map(compile_word, re.split('([A-Z]+)', formula)))
