@@ -1,0 +1,7 @@
+str: immutable sequence of homogeneous unicode code points
+byte: immutable sequence of bytes, File, Network resources, HTTP response
+list: mutable sequence of heterogeneous objects
+dictionary: unordered mapping of unique immutable keys to (im)mutable values
+tuple: immutable sequence of heterogeneous objects
+range: arithmetic progression of integers
+set: unordered collection of unique immutable objects
