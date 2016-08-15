@@ -3,7 +3,6 @@
 # SeyyedMahdiHP@gmail.com
 """
 Given two rectangles, find if the given two rectangles overlap or not.
-
 Note that a rectangle can be represented by two coordinates, top left and bottom right. So mainly we are given following four coordinates.
 l1: Top Left coordinate of first rectangle.
 r1: Bottom Right coordinate of first rectangle.
@@ -50,8 +49,16 @@ def calculate_cord_dictionary_to_list(rect):
     return list(l), list(r)
 
 
+# def check_overlap2(rect1,rect2):
+#     if rect1["y"]>(rect2["y"]+rect2["h"]) or (rect1["x"]+rect1["w"]) <rect2["x"]:
+#         print("Rectangles Don't Overlap")
+#         return False
+#     print("Rectangles Overlap")
+#     return True
 rect1 = {"x": 2, "y": 3, "h": 2, "w": 5}
 rect2 = {"x": 3, "y": 6, "h": 5, "w": 2}
 l1, r1 = calculate_cord_dictionary_to_list(rect1)
 l2, r2 = calculate_cord_dictionary_to_list(rect2)
+#check_overlap2(rect1, rect2)
 check_overlap(l1, l2, r1, r2)
+
