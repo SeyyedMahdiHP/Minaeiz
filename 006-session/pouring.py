@@ -25,12 +25,12 @@ def successor(x, y, X, Y):
         (x + y, 0) if x + y <= X else (X, x+y - X): 'X <- Y'
     }
 
-# d = {'Emtpy X': (0, 9), 'Emtpy Y': (4, 0)}
-# for k, v in d.items():
-#     x, y = v
-#     print(x)
-# print(successor(2, 8, 4, 9))
-# print(pouring(4, 9, 6))
+d = {'Emtpy X': (0, 9), 'Emtpy Y': (4, 0)}
+for k, v in d.items():
+    x, y = v
+    print(x)
+print(successor(2, 8, 4, 9))
+print(pouring(4, 9, 6))
 # [[(0, 0), 'FILL X', (4, 0), 'FILL Y', (4, 9)]]
 # (4, 9) -> (0, 9) Emtpy X
 # (4, 9) -> (4, 0) Empty Y
