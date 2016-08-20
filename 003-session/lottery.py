@@ -24,7 +24,7 @@ d = defaultdict(int)  # we will see each score selection count
 for _ in range(10000):
     d[lottery1()] += 1
 
-print(sorted(list(zip(d.keys(), d.values()))))
+print(sorted(d.items()))
 # from pprint import pprint as pp
 # import random
 # import collections
